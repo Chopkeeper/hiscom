@@ -62,4 +62,7 @@ if __name__ == '__main__':
     if not os.path.exists('computers.db'):
         with app.app_context():
             db.create_all()
-    app.run(debug=True)
+    
+    # ✅ แก้ตรงนี้เพื่อให้ Render ใช้ PORT ได้
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
